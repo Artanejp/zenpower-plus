@@ -35,7 +35,12 @@
 #include <linux/hwmon.h>
 #include <linux/module.h>
 #include <linux/pci.h>
-#include <asm/amd_nb.h>
+
+#if LINUX_VERSION_CODE >= KERNEL_VERSION(6, 16, 0)
+# include <asm/amd/nb.h>
+#else
+# include <asm/amd_nb.h>
+#endif
 
 MODULE_DESCRIPTION("AMD ZEN family CPU Sensors Driver");
 MODULE_AUTHOR("Ondrej Čerman");
